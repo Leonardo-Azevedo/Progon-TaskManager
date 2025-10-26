@@ -1,4 +1,4 @@
-﻿using Progon.Domain.Entities.Enums;
+﻿using Progon.Domain.Enums;
 
 namespace Progon.Domain.Entities.Interfaces
 {

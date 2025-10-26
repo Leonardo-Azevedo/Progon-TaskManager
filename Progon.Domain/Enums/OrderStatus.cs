@@ -1,5 +1,5 @@
 ﻿//Status das tarefas
-namespace Progon.Domain.Entities.Enums
+namespace Progon.Domain.Enums
 {
     public enum OrderStatus
     {

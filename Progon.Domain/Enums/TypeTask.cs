@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Progon.Domain.Entities.Enums
+namespace Progon.Domain.Enums
 {
     public enum TypeTask
     {
