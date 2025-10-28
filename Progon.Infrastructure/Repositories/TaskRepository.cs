@@ -222,7 +222,7 @@ namespace Progon.Infrastructure.Repositories
             {
                 using (var conn = _dbConnection.connect())
                 {
-                    //executar o comando
+                    cmd.Connection = conn;
                     SqlDataReader reader = cmd.ExecuteReader();
                     //percorrer a listagem
                     while (reader.Read())

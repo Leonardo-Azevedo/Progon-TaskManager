@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Progon.Application.Interfaces;
+using Progon.Domain.Entities;
+using Progon.Domain.Enums;
 
 namespace Progon.API
 {
@@ -14,7 +16,8 @@ namespace Progon.API
             _taskService = taskService;
         }
 
-        [HttpGet]
+        //Listagem total
+        [HttpGet("list")]
         public IActionResult ListAll()
         {
             var tasks = _taskService.ListAll();
@@ -22,12 +25,24 @@ namespace Progon.API
             return new ObjectResult(tasks);
         }
 
-        //[HttpPost]
-        //public IActionResult Create()
-        //{
-        //    var task = _taskService.CreateTask();
+        //Listagem com filtro
+        [HttpGet("listWithFilter")]
+        public IActionResult ListWithFilter(string name = null, OrderStatus? status = null, DateTime? startDate = null, DateTime? endDate = null)
+        {
+            var tasks = _taskService.ListWithFilter(name, status, startDate, endDate);
 
-        //    return new ObjectResult(true);
-        //}
+            return new ObjectResult(tasks);
+        }
+
+        //Criação de task
+        [HttpPost("createTask")]
+        //Feito com parametros para testes, atualizar para receber json
+        public IActionResult Create(string name, string description, TypeTask type, DateTime createDate, DateTime startDate, DateTime? finishDate, OrderStatus status)
+        {
+            var taskCreate = new SimpleTask(name, description, type, createDate, startDate, finishDate, status);
+            var task = _taskService.CreateTask(taskCreate);
+
+            return new ObjectResult(true);
+        }
     }
 }
