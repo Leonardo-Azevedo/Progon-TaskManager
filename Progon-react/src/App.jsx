@@ -25,13 +25,12 @@ export default function App() {
     getAllTask();
   }, []);
 
-  async function onAddTaskSubmit(name, description, type, startDate, status) {
+  async function onAddTaskSubmit(name, description, type, startDate) {
     await api.post("/createTask", {
       Name: name,
       Description: description,
       Type: type,
       StartDate: startDate,
-      Status: status,
     });
 
     getAllTask();

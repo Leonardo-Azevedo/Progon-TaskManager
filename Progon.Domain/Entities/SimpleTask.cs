@@ -37,5 +37,15 @@ namespace Progon.Domain.Entities
             FinishDate = finishDate;
             Status = status;
         }
+    
+        public SimpleTask(string name, string description, TypeTask type, DateTime createDate, DateTime startDate, DateTime? finishDate)
+        {
+            Name = name;
+            Description = description;
+            Type = type;
+            CreateDate = createDate;
+            StartDate = startDate;
+            FinishDate = finishDate;
+        }
     }
 }

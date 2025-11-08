@@ -5,7 +5,6 @@ export default function CreateTask({ onAddTaskSubmit }) {
   const [description, setDescription] = useState("");
   const [type, setType] = useState("");
   const [startDate, setStartDate] = useState("");
-  const [status, setStatus] = useState("");
 
   return (
     <div className="space-y-4 shadow w-[800px] h-[320px] bg-stone-800 rounded-lg p-6 flex flex-col">
@@ -40,21 +39,10 @@ export default function CreateTask({ onAddTaskSubmit }) {
           value={startDate}
           onChange={(event) => setStartDate(event.target.value)}
         />
-        <input
-          type="number"
-          placeholder="Status"
-          max={1}
-          min={0}
-          className="border border-slate-300 outline-black px-4 py-4 rounded-md"
-          value={status}
-          onChange={(event) => setStatus(event.target.value)}
-        />
       </div>
 
       <button
-        onClick={() =>
-          onAddTaskSubmit(name, description, type, startDate, status)
-        }
+        onClick={() => onAddTaskSubmit(name, description, type, startDate)}
         className="text-lg text-white bg-gradient-to-r from-purple-600 to-purple-900 px-4 py-2 rounded-md"
       >
         Create

@@ -31,6 +31,8 @@ namespace Progon.Application.Services
                 return new ServiceResult(false, "Start date can't be greater than the finish date.");
             }
 
+            task.Status = 0;
+
             try
             {
                 _taskRepository.Create(task);

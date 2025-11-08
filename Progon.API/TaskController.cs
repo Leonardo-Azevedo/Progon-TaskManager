@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Progon.Application.DTO;
 using Progon.Application.Interfaces;
@@ -46,8 +47,7 @@ namespace Progon.API
                 (TypeTask)request.Type,
                 request.CreateDate,
                 request.StartDate,
-                request.FinishDate,
-                (OrderStatus)request.Status
+                request.FinishDate
             );
 
             var task = _taskService.CreateTask(taskCreate);
@@ -62,5 +62,32 @@ namespace Progon.API
 
             return new ObjectResult(false);
         }
+        
+        [HttpPut]    
+        public IActionResult Update([FromBody] UpdateTaskRequest updateRequest)
+        {
+            var taskUpdate = new SimpleTask(
+                updateRequest.Id,
+                updateRequest.Name,
+                updateRequest.Description,
+                (TypeTask)updateRequest.Type,
+                updateRequest.CreateDate,
+                updateRequest.StartDate,
+                updateRequest.FinishDate,
+                (OrderStatus)updateRequest.Status
+            );
+
+            var task = _taskService.UpdateTask(taskUpdate);
+
+            return new ObjectResult(true);
+        }
+    
+    
+    
+    
+    
+    
+    
+    
     }
 }
